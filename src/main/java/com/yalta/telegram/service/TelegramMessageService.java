@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Service
 @RequiredArgsConstructor
 @ConditionalOnBean(Config.class)
-public class MessageService {
+public class TelegramMessageService {
 
     private final ConcurrentLinkedQueue<SendMessage> sendQueue;
     private final ConsumersConfig consumersConfig;

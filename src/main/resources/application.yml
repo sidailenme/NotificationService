@@ -1,5 +1,5 @@
 notification-services:
-  telegram: false
+  telegram: true
 
 bot:
   config:
@@ -14,7 +14,7 @@ bot:
 
 spring:
   profiles:
-    active: telegram
+    active:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/yalta
