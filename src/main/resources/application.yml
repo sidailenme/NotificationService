@@ -1,0 +1,22 @@
+bot:
+  config:
+    message-sender-sleep-time: 1000
+  telegram:
+    token: "1837475911:AAGs4Fl6je0G83xscIXMPXyd_DxeR4GDkyA"
+    name: "notification_yalta_bot"
+    consumers:
+      - "207181187" #sasha_yalta
+
+
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yalta
+    username: root
+    password: rootroot
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
