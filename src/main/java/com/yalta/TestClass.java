@@ -1,6 +1,5 @@
 package com.yalta;
 
-import com.yalta.telegram.config.ConsumersConfig;
 import com.yalta.telegram.service.TelegramMessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 @EnableScheduling
 @RequiredArgsConstructor
 public class TestClass {
-
 
     private final TelegramMessageService telegramMessageService;
 

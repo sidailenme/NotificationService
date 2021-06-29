@@ -1,8 +1,8 @@
 package com.yalta.telegram.config;
 
-import com.yalta.telegram.Core;
+import com.yalta.telegram.TelegramCore;
 import lombok.SneakyThrows;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -13,14 +13,14 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Configuration
-@ConditionalOnProperty(value = "notification-services.telegram")
 public class Config {
 
     @Bean
     @SneakyThrows
-    public BotSession botSession(Core core) {
+    @ConditionalOnBean(TelegramCore.class)
+    public BotSession botSession(TelegramCore telegramCore) {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        return telegramBotsApi.registerBot(core);
+        return telegramBotsApi.registerBot(telegramCore);
     }
 
     @Bean

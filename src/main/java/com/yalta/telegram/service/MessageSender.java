@@ -1,7 +1,6 @@
 package com.yalta.telegram.service;
 
-import com.yalta.telegram.Core;
-import com.yalta.telegram.config.Config;
+import com.yalta.telegram.TelegramCore;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -13,17 +12,17 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Slf4j
 @Service
-@ConditionalOnBean(Config.class)
+@ConditionalOnBean(TelegramCore.class)
 public class MessageSender implements Runnable {
 
     @Value("${bot.config.message-sender-sleep-time:3000}")
     private long MESSAGE_SENDER_SLEEP_TIME;
-    private final Core core;
+    private final TelegramCore telegramCore;
     private final ConcurrentLinkedQueue<SendMessage> sendQueue;
 
-    public MessageSender(Core core, ConcurrentLinkedQueue<SendMessage> sendQueue) {
+    public MessageSender(TelegramCore telegramCore, ConcurrentLinkedQueue<SendMessage> sendQueue) {
         this.sendQueue = sendQueue;
-        this.core = core;
+        this.telegramCore = telegramCore;
 
         Thread thread = new Thread(this);
         thread.setDaemon(true);
@@ -46,6 +45,6 @@ public class MessageSender implements Runnable {
     }
 
     public void send(SendMessage sendMessage) throws TelegramApiException {
-        core.execute(sendMessage);
+        telegramCore.execute(sendMessage);
     }
 }

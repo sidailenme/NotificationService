@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Service
 @RequiredArgsConstructor
-@ConditionalOnBean(Config.class)
 public class TelegramMessageService {
 
     private final ConcurrentLinkedQueue<SendMessage> sendQueue;

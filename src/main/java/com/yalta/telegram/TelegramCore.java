@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -14,8 +15,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Getter
 @Service
 @RequiredArgsConstructor
-@ConditionalOnBean(Config.class)
-public class Core extends TelegramLongPollingBot {
+@ConditionalOnProperty(value = "notification-services.telegram")
+public class TelegramCore extends TelegramLongPollingBot {
 
     @Value("${bot.telegram.name}")
     private String botUsername;
