@@ -1,5 +1,6 @@
 notification-services:
   telegram: true
+  email: true
 
 bot:
   config:
@@ -10,7 +11,14 @@ bot:
     consumers:
       - "207181187" #sasha_yalta
 
-
+email:
+  config:
+    host: "smtp.gmail.com"
+    port: 587
+    username: "notification.yalta@gmail.com"
+    password: "rootroot123"
+    addressees:
+      - "sidailen.me@gmail.com"
 
 spring:
   profiles:

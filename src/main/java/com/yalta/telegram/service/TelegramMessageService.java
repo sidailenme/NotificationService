@@ -1,23 +1,33 @@
 package com.yalta.telegram.service;
 
 
-import com.yalta.telegram.config.ConsumersConfig;
+import com.yalta.NotificationService;
+import com.yalta.telegram.TelegramCore;
+import com.yalta.telegram.config.TelegramConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-
-import java.util.concurrent.ConcurrentLinkedQueue;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Service
 @RequiredArgsConstructor
-public class TelegramMessageService {
+public class TelegramMessageService implements NotificationService {
 
-    private final ConcurrentLinkedQueue<SendMessage> sendQueue;
-    private final ConsumersConfig consumersConfig;
+    private final TelegramConfig telegramConfig;
+    private final TelegramCore telegramCore;
 
-    public void createMessage(String payload) {
-        consumersConfig.getConsumers().stream()
+    @Override
+    public void sendNotification(String payload) {
+        telegramConfig.getConsumers().stream()
                 .map(chatId -> new SendMessage(chatId, payload))
-                .forEach(sendQueue::add);
+                .forEach(this::execute);
+    }
+
+    public void execute(SendMessage message) {
+        try {
+            telegramCore.execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
     }
 }
