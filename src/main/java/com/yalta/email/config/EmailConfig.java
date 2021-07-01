@@ -13,8 +13,8 @@ import java.util.Properties;
 
 @Data
 @Configuration
-@ConditionalOnProperty("notification-services.email")
 @ConfigurationProperties("email.config")
+@ConditionalOnProperty("notification-services.email")
 public class EmailConfig {
 
     private List<String> addressees;
@@ -22,6 +22,7 @@ public class EmailConfig {
     private String host;
     private String username;
     private String password;
+    private String connectionTimeout;
 
     @Bean
     public JavaMailSender mailSender() {
@@ -34,6 +35,7 @@ public class EmailConfig {
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.auth", "true");
         properties.setProperty("mail.smtp.starttls.enable", "true");
+        properties.setProperty("mail.smtp.connectiontimeout", connectionTimeout);
         mailSender.setJavaMailProperties(properties);
 
         return mailSender;

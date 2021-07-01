@@ -1,4 +1,4 @@
-package com.yalta.telegram;
+package com.yalta.telegram.config;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Getter
 @Service
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "notification-services.telegram")
+@ConditionalOnProperty("notification-services.telegram")
 public class TelegramCore extends TelegramLongPollingBot {
 
     @Value("${bot.telegram.name}")

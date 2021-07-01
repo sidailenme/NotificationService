@@ -1,6 +1,6 @@
 notification-services:
   telegram: true
-  email: true
+  email: false
 
 bot:
   config:
@@ -17,6 +17,7 @@ email:
     port: 587
     username: "notification.yalta@gmail.com"
     password: "rootroot123"
+    connectionTimeout: "1"
     addressees:
       - "sidailen.me@gmail.com"
 
