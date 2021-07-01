@@ -1,11 +1,9 @@
 notification-services:
   telegram: true
-  email: false
+  email: true
 
-bot:
+telegram:
   config:
-    message-sender-sleep-time: 1000
-  telegram:
     token: "1837475911:AAGs4Fl6je0G83xscIXMPXyd_DxeR4GDkyA"
     name: "notification_yalta_bot"
     consumers:
@@ -17,7 +15,7 @@ email:
     port: 587
     username: "notification.yalta@gmail.com"
     password: "rootroot123"
-    connectionTimeout: "1"
+    connectionTimeout: "5000"
     addressees:
       - "sidailen.me@gmail.com"
 

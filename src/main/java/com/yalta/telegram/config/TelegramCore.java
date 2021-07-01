@@ -16,9 +16,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @ConditionalOnProperty("notification-services.telegram")
 public class TelegramCore extends TelegramLongPollingBot {
 
-    @Value("${bot.telegram.name}")
+    @Value("${telegram.config.name}")
     private String botUsername;
-    @Value("${bot.telegram.token}")
+    @Value("${telegram.config.token}")
     private String botToken;
 
 

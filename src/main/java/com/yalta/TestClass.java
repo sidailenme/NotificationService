@@ -18,7 +18,10 @@ public class TestClass {
 
     @Scheduled(cron = "0/5 * * * * *")
     public void foo() {
-        serviceList.forEach(el -> el.sendNotification("hello" + System.currentTimeMillis()));
+        System.out.println();
+        serviceList.stream().parallel().forEach(el -> el.sendNotification("hello" + Thread.currentThread().getName()));
+
+
     }
 
 }

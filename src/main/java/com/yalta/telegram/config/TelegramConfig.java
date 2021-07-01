@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @Configuration
 @ConditionalOnBean(TelegramCore.class)
-@ConfigurationProperties("bot.telegram")
+@ConfigurationProperties("telegram.config")
 public class TelegramConfig {
 
     private List<String> consumers;
