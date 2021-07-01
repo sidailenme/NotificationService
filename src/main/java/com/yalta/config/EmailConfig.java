@@ -1,4 +1,4 @@
-package com.yalta.email.config;
+package com.yalta.config;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

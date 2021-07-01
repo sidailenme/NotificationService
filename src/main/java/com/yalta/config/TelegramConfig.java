@@ -1,4 +1,4 @@
-package com.yalta.telegram.config;
+package com.yalta.config;
 
 import lombok.Data;
 import lombok.SneakyThrows;

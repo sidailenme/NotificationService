@@ -1,9 +1,9 @@
-package com.yalta.telegram.service;
+package com.yalta.service.telegram;
 
 
-import com.yalta.NotificationService;
-import com.yalta.telegram.config.TelegramCore;
-import com.yalta.telegram.config.TelegramConfig;
+import com.yalta.service.NotificationService;
+import com.yalta.config.TelegramCore;
+import com.yalta.config.TelegramConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class TelegramMessageService implements NotificationService {
         try {
             telegramCore.execute(message);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            e.printStackTrace();    //todo
         }
     }
 }

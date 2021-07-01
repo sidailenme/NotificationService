@@ -1,7 +1,7 @@
-package com.yalta.email.service;
+package com.yalta.service.email;
 
-import com.yalta.NotificationService;
-import com.yalta.email.config.EmailConfig;
+import com.yalta.service.NotificationService;
+import com.yalta.config.EmailConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.mail.SimpleMailMessage;

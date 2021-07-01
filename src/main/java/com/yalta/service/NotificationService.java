@@ -1,4 +1,4 @@
-package com.yalta;
+package com.yalta.service;
 
 public interface NotificationService {
 

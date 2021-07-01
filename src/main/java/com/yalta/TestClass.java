@@ -1,5 +1,6 @@
 package com.yalta;
 
+import com.yalta.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableScheduling;
