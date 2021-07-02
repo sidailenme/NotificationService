@@ -1,18 +1,28 @@
-//package com.yalta.controller;
-//
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//public class NotificationController {
-//
-//    @GetMapping("/foo")
-//    public ResponseEntity<String> notification(@RequestParam("id") int id) {
-//        System.out.println(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//}
+package com.yalta.controller;
+
+import com.yalta.model.Message;
+import com.yalta.service.MessageService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+public class NotificationController {
+
+    private final MessageService messageService;
+
+    @PostMapping("/push")
+    public ResponseEntity<String> notification(@RequestBody Message message) {
+        try {
+            messageService.sent(message);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+}

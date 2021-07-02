@@ -1,7 +1,9 @@
 package com.yalta.service.email;
 
-import com.yalta.service.NotificationService;
+import com.yalta.config.Channel;
 import com.yalta.config.EmailConfig;
+import com.yalta.service.NotificationService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.mail.SimpleMailMessage;
@@ -15,6 +17,9 @@ public class MailMessageService implements NotificationService {
 
     private final JavaMailSender mailSender;
     private final EmailConfig emailConfig;
+
+    @Getter
+    private final Channel channel = Channel.EMAIL;
 
     @Override
     public void sendNotification(String payload) {
